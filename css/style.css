@@ -7,7 +7,10 @@ body {
 }
 
 .jumbotron {
-    background: transparent url(../images/banner.jpg) repeat-x 50% 0%;
+    background: -webkit-linear-gradient(top,#3F6AE3,#FFA0B4); /* Safari 5.1 - 6 */
+background: -o-linear-gradient(bottom,#3F6AE3,#FFA0B4); /* Opera 11.1 - 12*/
+background: -moz-linear-gradient(bottom,#3F6AE3,#FFA0B4); /* Firefox 3.6 - 15*/
+background: linear-gradient(to bottom, #3F6AE3, #FFA0B4); /* 标准的语法 */
     color: #fff;
     text-shadow: 1px 1px 1px #3b3262;
     margin-bottom: 0;
@@ -25,8 +28,16 @@ body {
     right: 0;
 }
 
+#resultText, .container .form-control, .container .select2-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .fetature {
     margin-top: 30px;
+}
+#resultText {
+  max-width: 1200px;
 }
 
 .page-body {
