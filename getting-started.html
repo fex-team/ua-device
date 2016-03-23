@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+            Getting started - UserAgent.js
+        </title>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/userAgent/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/userAgent/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/userAgent/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/userAgent/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/userAgent/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/userAgent/css/style.css">
+    
+</head>
+
+<body>
+    
+    <div id="wrapper">
+        <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand logo" href="/userAgent/">
+                <span class="fa fa-chrome "></span><b>UserAgent.js</b></a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                 
+                     
+                        
+                     
+                         
+                            
+                                <li class="active"><a href="/userAgent/getting-started.html" class="active">Getting started</a></li>
+                            
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                         
+                            
+                                <li><a href="/userAgent/demo">Demo</a></li>
+                            
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                 
+                     
+                        
+                     
+                        
+                     
+                        
+                     
+                        
+                    
+                
+                
+                <li><a target="_blank" href="https://github.com/fex-team/userAgent/issues?labels=faq&amp;page=1&amp;state=open">FAQ</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a target="_blank" href="https://github.com/fex-team/userAgent">Github</a></li>
+            </ul>
+        </div>
+        <!-- /.nav-collapse -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.navbar --> <div class="page-body">
+
+<div id="post-container" class="container">
+    
+
+    
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="post-toc"><ul class="nav">
+<li>
+<a href="#下载">下载</a>
+</li>
+<li>
+<a href="#文件结构">文件结构</a>
+</li>
+<li>
+<a href="#简单测试">简单测试</a>
+</li>
+<li>
+<a href="#调用方式">调用方式</a>
+</li>
+<li>
+<a href="#结果展示">结果展示</a>
+</li>
+</ul>
+</div>
+        </div>
+        <div class="col-md-9">
+
+            
+
+            <div class="page-container">
+                <h2 id="下载">下载</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone http://gitlab.baidu.com/fex/dp.git
+</code></pre></div>
+<h2 id="文件结构">文件结构</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">├─ node_modules
+├──── useragent.js
+├──── useragent_base.js
+└─ test.js
+</code></pre></div>
+<h2 id="简单测试">简单测试</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>userAgent
+node test.js
+</code></pre></div>
+<h2 id="调用方式">调用方式</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">UA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"useragent"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">test_ua_str</span> <span class="o">=</span> <span class="s1">'Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3'</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UA</span><span class="p">(</span><span class="nx">test_ua_str</span><span class="p">);</span>
+</code></pre></div>
+<p>通过这种方式即可完成对UA数据的解析。
+可得到以下有用信息:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+    <span class="nl">browser</span><span class="p">:</span> <span class="p">{</span>  <span class="c1">//浏览器信息</span>
+        <span class="nl">name</span><span class="p">:</span> <span class="s1">'Chrome'</span><span class="p">,</span>
+        <span class="nx">version</span><span class="err">:</span> <span class="p">{</span>
+            <span class="nl">original</span><span class="p">:</span> <span class="s1">'19.0.1084.60'</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">engine</span><span class="err">:</span> <span class="p">{</span>   <span class="c1">//浏览器内核</span>
+        <span class="nl">name</span><span class="p">:</span> <span class="s1">'Webkit'</span><span class="p">,</span>
+        <span class="nx">version</span><span class="err">:</span> <span class="p">{</span>
+            <span class="nl">original</span><span class="p">:</span> <span class="s1">'534.46.0'</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">os</span><span class="err">:</span> <span class="p">{</span>       <span class="c1">//操作系统</span>
+        <span class="nl">name</span><span class="p">:</span> <span class="s1">'iOS'</span><span class="p">,</span>
+        <span class="nx">version</span><span class="err">:</span> <span class="p">{</span>
+            <span class="nl">original</span><span class="p">:</span> <span class="s1">'5.1.1'</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">device</span><span class="err">:</span> <span class="p">{</span>   <span class="c1">//硬件信息</span>
+        <span class="nl">type</span><span class="p">:</span> <span class="s1">'mobile'</span><span class="p">,</span>
+        <span class="nx">manufacturer</span><span class="err">:</span> <span class="s1">'Apple'</span><span class="p">,</span>
+        <span class="nx">model</span><span class="err">:</span> <span class="s1">'IPHONE'</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="结果展示">结果展示</h2>
+
+<p>当用户通过UA库解析大量的数据后，便可以用这些数据计算之后进行可视化展示，下面给出了一份样例数据通过d3.js库的一个可视化展示(该代码参见github上的<a href="https://github.com/fex-team/userAgent/blob/master/treemap.js">treemap.js</a>,修改<code>container</code>和<code>uaData</code>变量后即可使用):
+<div id="treemap"></div></p>
+
+            </div>
+
+        </div>
+    </div>
+
+    
+</div></div> <div id="footer" class="footer">
+    <div class="footer-inner container">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="copyright">UserAgent.js由<a href="https://github.com/fex-team">fex-team</a>团队负责维护</p>
+                <p>&copy;2016-2018 Baidu Fex Team</p>
+            </div>
+            <div class="col-md-4">
+                <!-- <p>友情链接</p> -->
+                <ul class="friends-links">
+                    <li><a href="http://fis.baidu.com/" title="前端集成解决方案">FIS3</a></li>
+                    <li><a href="http://h5.baidu.com/" title="百度H5">百度H5</a></li>
+                    <li><a href="http://naotu.baidu.com/" title="百度脑图">百度脑图</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="weixin">
+                    <img src="/userAgent/images/qrcode.jpg" alt="..." class="img-rounded weixin-img" />
+                    <p>微信公共帐号</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+    <script type="text/javascript">
+    // 添加全局站点信息
+    var BASE_URL = '/userAgent';
+    </script>
+    <script type="text/javascript" src="/userAgent/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/userAgent/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/userAgent/js/global.js"></script>
+    
+        <script type="text/javascript" src="/userAgent/js/d3.js"></script>
+    
+        <script type="text/javascript" src="/userAgent/js/demo.js"></script>
+    
+</body>
+</html>
