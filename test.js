@@ -39,4 +39,3 @@ console.log('handle browser: \n browser: ' + ua_browser + '\n browser_version: '
 console.log('handle engine: \n engine: ' + ua_engine + '\n engine_version: '+ua_engineV+'\n');
 console.log('handle OS: \n OS: ' + ua_osName + '\n OS_version: '+ua_osVersion+'\n');
 console.log('handle device: \n device_type: ' + device_type + '\n device_model: '+device_model+'\n device_manufacturer: ' + device_manufacturer + '\n');
-
