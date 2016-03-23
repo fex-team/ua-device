@@ -4,7 +4,7 @@
 ## 下载
 
 ```bash
-git clone http://gitlab.baidu.com/fex/dp.git
+git clone https://github.com/fex-team/userAgent.git
 ```
 
 ## 文件结构
@@ -13,7 +13,8 @@ git clone http://gitlab.baidu.com/fex/dp.git
 ├─ node_modules
 ├──── useragent.js
 ├──── useragent_base.js
-└─ test.js
+├─ test.js
+└─ treemap.js
 ```
 ## 简单测试
 
