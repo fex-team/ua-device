@@ -1,35 +1,45 @@
-# userAgent
-一个用于解析UA来得到用户终端信息的JS库，详情可见[线上demo](http://fex.baidu.com/userAgent/)
+# ua-device
+一个用于解析UA来得到用户终端信息的JS库，详情可见[线上demo](http://fex.baidu.com/ua-device/)
 
 ## 下载
 
 ```bash
-git clone https://github.com/fex-team/userAgent.git
+git clone https://github.com/fex-team/ua-device.git
+```
+
+## npm方式
+```bash
+npm install ua-device
 ```
 
 ## 文件结构
 
 ```
-├─ node_modules
-├──── useragent.js
-├──── useragent_base.js
-├─ test.js
-└─ treemap.js
+├─ lib
+├──── ua-device.js
+├──── useragent-base.js
+├─ test
+├──── index.js
+├──── treemap.js
+├─ .gitignore
+├─ index.js
+├─ package.json
+└─ README.md
 ```
+
 ## 简单测试
 
 ```bash
-cd userAgent
-node test.js
+npm test
 ```
 
 ## 调用方式
 
 ```javascript
-var UA = require("useragent");
-var test_ua_str = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3';
+var UA = require('./lib/ua-device.js');
+var input = 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3';
 
-var result = new UA(test_ua_str);
+var output = new UA(input);
 ```
 
 通过这种方式即可完成对UA数据的解析。

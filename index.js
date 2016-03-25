@@ -1,1 +1,1 @@
-module.exports = require('./lib/useragent.js');
+module.exports = require('./lib/ua-device.js');
