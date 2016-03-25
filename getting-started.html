@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-            Getting started - UserAgent.js
+            Getting started - ua-device.js
         </title>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -15,12 +15,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="/userAgent/images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="/userAgent/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/userAgent/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="/userAgent/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/userAgent/css/syntax.css">
-    <link rel="stylesheet" type="text/css" href="/userAgent/css/style.css">
+    <link rel="shortcut icon" href="/ua-device/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/ua-device/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/ua-device/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/ua-device/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/ua-device/css/syntax.css">
+    <link rel="stylesheet" type="text/css" href="/ua-device/css/style.css">
     
 </head>
 
@@ -30,8 +30,8 @@
         <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container" style="width: 100%;padding-right: 30px;padding-left: 30px;">
         <div class="navbar-header">
-            <a class="navbar-brand logo" href="/userAgent/">
-                <span class="fa fa-chrome "></span><b>UserAgent.js</b></a>
+            <a class="navbar-brand logo" href="/ua-device/">
+                <span class="fa fa-chrome "></span><b>ua-device.js</b></a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -41,7 +41,7 @@
                      
                          
                             
-                                <li class="active"><a href="/userAgent/getting-started.html" class="active">Getting started</a></li>
+                                <li class="active"><a href="/ua-device/getting-started.html" class="active">Getting started</a></li>
                             
                         
                      
@@ -73,7 +73,7 @@
                      
                          
                             
-                                <li><a href="/userAgent/demo.html">Demo</a></li>
+                                <li><a href="/ua-device/demo.html">Demo</a></li>
                             
                         
                      
@@ -145,11 +145,11 @@
                     
                 
                 
-                <li><a target="_blank" href="https://github.com/fex-team/userAgent/issues?labels=faq&amp;page=1&amp;state=open">FAQ</a></li>
+                <li><a target="_blank" href="https://github.com/fex-team/ua-device/issues?labels=faq&amp;page=1&amp;state=open">FAQ</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a target="_blank" href="https://github.com/fex-team/userAgent">Github</a></li>
+                <li><a target="_blank" href="https://github.com/fex-team/ua-device">Github</a></li>
             </ul>
         </div>
         <!-- /.nav-collapse -->
@@ -168,6 +168,9 @@
             <div class="post-toc"><ul class="nav">
 <li>
 <a href="#下载">下载</a>
+</li>
+<li>
+<a href="#npm方式">npm方式</a>
 </li>
 <li>
 <a href="#文件结构">文件结构</a>
@@ -190,24 +193,31 @@
 
             <div class="page-container">
                 <h2 id="下载">下载</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/fex-team/userAgent.git
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/fex-team/ua-device.git
+</code></pre></div>
+<h2 id="npm方式">npm方式</h2>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install ua-device
 </code></pre></div>
 <h2 id="文件结构">文件结构</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">├─ node_modules
-├──── useragent.js
-├──── useragent_base.js
-├─ test.js
-└─ treemap.js
+<div class="highlight"><pre><code class="language-" data-lang="">├─ lib
+├──── ua-device.js
+├──── useragent-base.js
+├─ test
+├──── index.js
+├──── treemap.js
+├─ .gitignore
+├─ index.js
+├─ package.json
+└─ README.md
 </code></pre></div>
 <h2 id="简单测试">简单测试</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>userAgent
-node test.js
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm <span class="nb">test</span>
 </code></pre></div>
 <h2 id="调用方式">调用方式</h2>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">UA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"useragent"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">test_ua_str</span> <span class="o">=</span> <span class="s1">'Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3'</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">UA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./lib/ua-device.js'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="s1">'Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3'</span><span class="p">;</span>
 
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UA</span><span class="p">(</span><span class="nx">test_ua_str</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">output</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UA</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
 </code></pre></div>
 <p>通过这种方式即可完成对UA数据的解析。
 可得到以下有用信息:</p>
@@ -252,7 +262,7 @@ node test.js
     <div class="footer-inner container">
         <div class="row">
             <div class="col-md-4">
-                <p class="copyright">UserAgent.js由<a href="https://github.com/fex-team">fex-team</a>团队负责维护</p>
+                <p class="copyright">ua-device.js由<a href="https://github.com/fex-team">fex-team</a>团队负责维护</p>
                 <p>&copy;2016-2018 Baidu Fex Team</p>
             </div>
             <div class="col-md-4">
@@ -265,7 +275,7 @@ node test.js
             </div>
             <div class="col-md-4">
                 <div class="weixin">
-                    <img src="/userAgent/images/qrcode.jpg" alt="..." class="img-rounded weixin-img" />
+                    <img src="/ua-device/images/qrcode.jpg" alt="..." class="img-rounded weixin-img" />
                     <p>微信公共帐号</p>
                 </div>
             </div>
@@ -275,15 +285,15 @@ node test.js
     </div>
     <script type="text/javascript">
     // 添加全局站点信息
-    var BASE_URL = '/userAgent';
+    var BASE_URL = '/ua-device';
     </script>
-    <script type="text/javascript" src="/userAgent/js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="/userAgent/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/userAgent/js/global.js"></script>
+    <script type="text/javascript" src="/ua-device/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/ua-device/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/ua-device/js/global.js"></script>
     
-        <script type="text/javascript" src="/userAgent/js/d3.js"></script>
+        <script type="text/javascript" src="/ua-device/js/d3.js"></script>
     
-        <script type="text/javascript" src="/userAgent/js/demo.js"></script>
+        <script type="text/javascript" src="/ua-device/js/demo.js"></script>
     
 </body>
 </html>
