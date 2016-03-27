@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-            Getting started
+            Getting started - ua-device.js
         </title>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -170,13 +170,13 @@
 <a href="#下载">下载</a>
 </li>
 <li>
-<a href="#npm方式">npm方式</a>
+<a href="#why-ua-device-？">Why ua-device ？</a>
 </li>
 <li>
-<a href="#文件结构">文件结构</a>
+<a href="#目录结构">目录结构</a>
 </li>
 <li>
-<a href="#简单测试">简单测试</a>
+<a href="#测试">测试</a>
 </li>
 <li>
 <a href="#调用方式">调用方式</a>
@@ -193,59 +193,82 @@
 
             <div class="page-container">
                 <h2 id="下载">下载</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/fex-team/ua-device.git
-</code></pre></div>
-<h2 id="npm方式">npm方式</h2>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash">npm install ua-device
 </code></pre></div>
-<h2 id="文件结构">文件结构</h2>
-<div class="highlight"><pre><code class="language-" data-lang="">├─ lib
-├──── ua-device.js
-├──── useragent-base.js
-├─ test
-├──── index.js
-├──── treemap.js
-├─ .gitignore
-├─ index.js
-├─ package.json
-└─ README.md
+<h2 id="why-ua-device-？">Why ua-device ？</h2>
+
+<p>由于在国内生产PC的厂家有限，大众用户使用的浏览器也主要是当前的一些主流浏览器。因此目前的UA解析库在对OS、浏览器外壳、浏览器内核等的识别率都相当高。<strong>但是由于国内的移动设备的五花八门，对于移动设备的硬件信息是很难用一套通用的方法进行识别，因此 ua-device 诞生</strong></p>
+
+<ol>
+<li><strong>通过机型识别品牌</strong>: 例如 <code>[-\s](Galaxy[\s-_]nexus|Galaxy[\s-_]\w*[\s-_]\w*|Galaxy[\s-_]\w*|SM-\w*|GT-\w*|s[cgp]h-\w*|shw-\w*</code> 这样的匹配规则以及一些从<a href="http://detail.zol.com.cn/cell_phone_index/subcate57_list_1.html">中关村在线</a>爬取到的机型名称如<code>G3508</code>、<code>G3508J</code>、<code>G3508i</code> 等识别出来该机型的品牌为<code>Samsung</code> 因为单纯从UA信息确实无法得到品牌数据，这也是为何很多高Star的UA解析库识别手机品牌成功率只有30%-40%的原因(<code>ua-device</code>识别率可见下面测试用例)。</li>
+<li><strong>解决国内UA信息不规范</strong>: 由于国内很多手机生产厂家的设计问题，例如小米可供识别的UA数据可能为 <code>mi 2</code> 、<code>mi2</code>、<code>m2</code>、<code>mi-2LTE</code>、<code>MI-20150XX</code>、<code>minote</code>等等，如果匹配规则限制太紧就会导致数据无法命中，如果匹配规则太松又会让其它山寨机型滥竽充数，所以需要一套比较特殊的处理流程。</li>
+<li><strong>解决国内因不同发版而造成的UA数据不一致</strong>: 例如很多机型会因同电信、移动、联通而UA信息不同，但实际应该把他们算成同一款手机</li>
+<li><strong>解决机型的重命名与合并</strong>: 很多手机在不同时间生产其UA信息可能不同，所以需要对他们进行合并，防止在展示top数据时因数据分散而排不上号。</li>
+</ol>
+
+<h2 id="目录结构">目录结构</h2>
+<div class="highlight"><pre><code class="language-" data-lang="">ua-device/
+├── LICENSE
+├── README.md
+├── index.js
+├── lib
+│   ├── ua-device.js
+│   └── useragent-base.js
+├── package.json
+└── test
+    ├── index.js
+    ├── test_input
+    └── treemap.js
 </code></pre></div>
-<h2 id="简单测试">简单测试</h2>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash">npm <span class="nb">test</span>
+<h2 id="测试">测试</h2>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">npm</span> <span class="nx">test</span>
+
+<span class="c1">// you can get the test result like this:</span>
+<span class="c1">//  ua-device测试数据共3292条</span>
+<span class="c1">//    ✓ browser_name识别成功共 3234 条，成功率为 98.24% 目标成功率为:70%</span>
+<span class="c1">//    ✓ browser_version识别成功共 2575 条，成功率为 78.22% 目标成功率为:70%</span>
+<span class="c1">//    ✓ engine_name识别成功共 3282 条，成功率为 99.70% 目标成功率为:70%</span>
+<span class="c1">//    ✓ engine_version识别成功共 3279 条，成功率为 99.61% 目标成功率为:70%</span>
+<span class="c1">//    ✓ os_name识别成功共 3291 条，成功率为 99.97% 目标成功率为:70%</span>
+<span class="c1">//    ✓ os_version识别成功共 3289 条，成功率为 99.91% 目标成功率为:70%</span>
+<span class="c1">//    ✓ device_manufacturer识别成功共 2887 条，成功率为 87.70% 目标成功率为:70%</span>
+<span class="c1">//    ✓ device_model识别成功共 3283 条，成功率为 99.73% 目标成功率为:70%</span>
 </code></pre></div>
+<p>有兴趣的同学可以将<code>ua-device</code>与其它高star库进行对比，相信对比后无论在识别成功率还是识别内容的准确性上，你都会选择<code>ua-device</code>。</p>
+
 <h2 id="调用方式">调用方式</h2>
 <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">UA</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'ua-device'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="s1">'Mozilla/5.0 (iPhone; U; CPU iPhone OS 5_1_1 like Mac OS X; en) AppleWebKit/534.46.0 (KHTML, like Gecko) CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3'</span><span class="p">;</span>
 
 <span class="kd">var</span> <span class="nx">output</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UA</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
-</code></pre></div>
-<p>通过这种方式即可完成对UA数据的解析。
-可得到以下有用信息:</p>
-<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
-    <span class="nl">browser</span><span class="p">:</span> <span class="p">{</span>  <span class="c1">//浏览器信息</span>
-        <span class="nl">name</span><span class="p">:</span> <span class="s1">'Chrome'</span><span class="p">,</span>
-        <span class="nx">version</span><span class="err">:</span> <span class="p">{</span>
-            <span class="nl">original</span><span class="p">:</span> <span class="s1">'19.0.1084.60'</span><span class="p">,</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nx">engine</span><span class="err">:</span> <span class="p">{</span>   <span class="c1">//浏览器内核</span>
-        <span class="nl">name</span><span class="p">:</span> <span class="s1">'Webkit'</span><span class="p">,</span>
-        <span class="nx">version</span><span class="err">:</span> <span class="p">{</span>
-            <span class="nl">original</span><span class="p">:</span> <span class="s1">'534.46.0'</span><span class="p">,</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nx">os</span><span class="err">:</span> <span class="p">{</span>       <span class="c1">//操作系统</span>
-        <span class="nl">name</span><span class="p">:</span> <span class="s1">'iOS'</span><span class="p">,</span>
-        <span class="nx">version</span><span class="err">:</span> <span class="p">{</span>
-            <span class="nl">original</span><span class="p">:</span> <span class="s1">'5.1.1'</span><span class="p">,</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nx">device</span><span class="err">:</span> <span class="p">{</span>   <span class="c1">//硬件信息</span>
-        <span class="nl">type</span><span class="p">:</span> <span class="s1">'mobile'</span><span class="p">,</span>
-        <span class="nx">manufacturer</span><span class="err">:</span> <span class="s1">'Apple'</span><span class="p">,</span>
-        <span class="nx">model</span><span class="err">:</span> <span class="s1">'IPHONE'</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="nx">echo</span> <span class="nx">output</span><span class="p">;</span>
+
+<span class="c1">// you can get a json like this:</span>
+<span class="c1">// {</span>
+<span class="c1">//     browser: {  //浏览器信息</span>
+<span class="c1">//         name: 'Chrome',</span>
+<span class="c1">//         version: {</span>
+<span class="c1">//             original: '19.0.1084.60',</span>
+<span class="c1">//         }</span>
+<span class="c1">//     },</span>
+<span class="c1">//     engine: {   //浏览器内核</span>
+<span class="c1">//         name: 'Webkit',</span>
+<span class="c1">//         version: {</span>
+<span class="c1">//             original: '534.46.0',</span>
+<span class="c1">//         }</span>
+<span class="c1">//     },</span>
+<span class="c1">//     os: {       //操作系统</span>
+<span class="c1">//         name: 'iOS',</span>
+<span class="c1">//         version: {</span>
+<span class="c1">//             original: '5.1.1',</span>
+<span class="c1">//         }</span>
+<span class="c1">//     },</span>
+<span class="c1">//     device: {   //硬件信息</span>
+<span class="c1">//         type: 'mobile',</span>
+<span class="c1">//         manufacturer: 'Apple',</span>
+<span class="c1">//         model: 'IPHONE'</span>
+<span class="c1">//     }</span>
+<span class="c1">// }</span>
 </code></pre></div>
 <h2 id="结果展示">结果展示</h2>
 
