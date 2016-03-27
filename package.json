@@ -19,6 +19,9 @@
     "device-parser",
     "ua-device"
   ],
+  "devDependencies": {
+    "mocha": ">2.3.4"
+  },
   "author": "Hongbin Du <duhongbin01@baidu.com>",
   "contributors": [
     "Hongbin Du <duhongbin01@baidu.com>",

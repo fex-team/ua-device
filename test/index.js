@@ -1,40 +1,72 @@
 #!nodejs/bin/node
-var UA = require("../lib/uaDevice");
+var UA = require("../lib/ua-device");
+var path = require('path');
+var assert = require("assert");
+var fs = require('fs');
 
-var input = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36';
-
-var res_ua = new UA(input);
-
-/***************** handle browser *****************/
-var ua_browser = res_ua['browser']['name'] || '';
-var ua_bversion = '';
-if (res_ua['browser']['version'] && res_ua['browser']['version']['original']){
-    ua_bversion = res_ua['browser']['version']['original'];
+var total_test_num = 0;
+var recognize_num = {
+	'browser_name': 0,
+	'browser_version': 0,
+	'engine_name': 0,
+	'engine_version': 0,
+	'os_name': 0,
+	'os_version': 0,
+	'device_manufacturer': 0,
+	'device_model': 0
 }
 
-/***************** handle engine *****************/
-var ua_engine = res_ua['engine']['name'] || '';
-var ua_engineV = '';
-if (res_ua['engine']['version'] && res_ua['engine']['version']['original']){
-    ua_engineV = res_ua['engine']['version']['original'];
+function testData () {
+	var data_input_path = path.resolve(__dirname, './test_input');
+	var data_input = String(fs.readFileSync(data_input_path)).split("\n");
+	for(var i = 0; i < data_input.length; ++i) {
+		if(data_input.length == 0) {
+			continue;
+		}
+		total_test_num += 1;
+		var tmp_result = new UA(data_input[i]);
+		
+		/********* handle browser engine os *********/
+		var tmp_arr = ['browser', 'engine', 'os'];
+		for(var j = 0; j < tmp_arr.length; ++j) {
+			if(tmp_result[tmp_arr[j]]['name']) {
+				recognize_num[tmp_arr[j]+'_name'] += 1;
+			}
+			if(tmp_result[tmp_arr[j]]['version'] && tmp_result[tmp_arr[j]]['version']['original']){
+				recognize_num[tmp_arr[j]+'_version'] += 1;
+			}
+		}
+
+		/***************** handle device *****************/
+		var device_type = tmp_result['device']['type'] || '';
+		var device_model = tmp_result['device']['model'] || '-';
+		var device_manufacturer = tmp_result['device']['manufacturer'] || '-';
+		if(tmp_result['device']['type'] == 'desktop' || tmp_result['device']['type'] == 'emulator' || tmp_result['device']['type'] == 'television') {
+			recognize_num['device_manufacturer'] += 1;
+			recognize_num['device_model'] += 1;
+		} else if(tmp_result['device']['type'] == "mobile" || tmp_result['device']['type'] == 'tablet' || tmp_result['device']['type'] == 'media') {
+			if(tmp_result['device']['model']) {
+				recognize_num['device_model'] += 1;
+			}
+			if(tmp_result['device']['manufacturer']){
+				recognize_num['device_manufacturer'] += 1;
+			}
+		}
+	}
+
+	// avoid the total num is 0
+	if(total_test_num == 0) {
+		total_test_num = 1;
+	}
 }
 
-
-/***************** handle os *****************/
-var ua_osName = res_ua['os']['name'] || '';
-var ua_osVersion = '';
-if (res_ua['os']['version'] && res_ua['os']['version']['original']){
-    ua_osVersion = res_ua['os']['version']['original'];
-}
-
-
-/***************** handle device *****************/
-var device_type = res_ua['device']['type'] || '';
-var device_model = res_ua['device']['model'] || '-';
-var device_manufacturer = res_ua['device']['manufacturer'] || '-';
-
-console.log('get ua data from: \n'+ input+'\n');
-console.log('handle browser: \n browser: ' + ua_browser + '\n browser_version: '+ua_bversion+'\n');
-console.log('handle engine: \n engine: ' + ua_engine + '\n engine_version: '+ua_engineV+'\n');
-console.log('handle OS: \n OS: ' + ua_osName + '\n OS_version: '+ua_osVersion+'\n');
-console.log('handle device: \n device_type: ' + device_type + '\n device_model: '+device_model+'\n device_manufacturer: ' + device_manufacturer + '\n');
+testData();
+describe('ua-device测试数据共'+total_test_num+'条', function() {
+	var result_arr = ['browser_name','browser_version','engine_name','engine_version','os_name','os_version','device_manufacturer','device_model'];
+	for(var i = 0; i < result_arr.length; ++i) {
+		var describe_str = result_arr[i]+'识别成功共 '+recognize_num[result_arr[i]]+' 条，成功率为 ' + parseFloat(recognize_num[result_arr[i]]*100/total_test_num).toFixed(2)+'%\n';
+		it(describe_str, function() {
+			assert.equal(1,1);
+		});
+	}
+});
