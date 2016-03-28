@@ -1,4 +1,4 @@
-# ua-device
+# ua-device [![Build Status](https://travis-ci.org/fex-team/ua-device.svg?branch=master)](https://travis-ci.org/fex-team/ua-device)
 一个用于解析UA来得到用户终端信息的JS库，详情可见[线上demo](http://fex.baidu.com/ua-device/)
 
 ## 下载
@@ -37,14 +37,14 @@ npm test
 
 # you can get the test result like this:
 #  ua-device测试数据共3292条
-#    ✓ browser_name识别成功共 3234 条，成功率为 98.24% 目标成功率为:70%
-#    ✓ browser_version识别成功共 2575 条，成功率为 78.22% 目标成功率为:70%
-#    ✓ engine_name识别成功共 3282 条，成功率为 99.70% 目标成功率为:70%
-#    ✓ engine_version识别成功共 3279 条，成功率为 99.61% 目标成功率为:70%
-#    ✓ os_name识别成功共 3291 条，成功率为 99.97% 目标成功率为:70%
-#    ✓ os_version识别成功共 3289 条，成功率为 99.91% 目标成功率为:70%
-#    ✓ device_manufacturer识别成功共 2887 条，成功率为 87.70% 目标成功率为:70%
-#    ✓ device_model识别成功共 3283 条，成功率为 99.73% 目标成功率为:70%
+#   ✓ browser_name识别成功共 3234 条，成功率为 98.24%
+#   ✓ browser_version识别成功共 2575 条，成功率为 78.22%
+#   ✓ engine_name识别成功共 3282 条，成功率为 99.70%
+#   ✓ engine_version识别成功共 3279 条，成功率为 99.61%
+#   ✓ os_name识别成功共 3291 条，成功率为 99.97%
+#   ✓ os_version识别成功共 3289 条，成功率为 99.91%
+#   ✓ device_manufacturer识别成功共 2887 条，成功率为 87.70%
+#   ✓ device_model识别成功共 3283 条，成功率为 99.73%
 ```
 有兴趣的同学可以将`ua-device`与其它高star库进行对比，相信对比后无论在识别成功率还是识别内容的准确性上，你都会选择`ua-device`。
 
