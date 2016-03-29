@@ -553,6 +553,12 @@ var userAgent = function(ua) {
             'original': match[1]
         };
     } 
+    if (match = /OPR\/([\w.]+)/i.exec(ua)) {
+        uaData.browser.name = 'Opera';
+        uaData.browser.version = {
+            original: match[1]
+        };
+    }
     // IE 11
     else if (/Trident\/7/i.test(ua) && /rv:11/i.test(ua)) {
         a.browser.name = 'Internet Explorer';
