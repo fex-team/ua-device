@@ -554,8 +554,8 @@ var userAgent = function(ua) {
         };
     } 
     if (match = /OPR\/([\w.]+)/i.exec(ua)) {
-        uaData.browser.name = 'Opera';
-        uaData.browser.version = {
+        a.browser.name = 'Opera';
+        a.browser.version = {
             original: match[1]
         };
     }
