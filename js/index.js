@@ -43,7 +43,7 @@
     	});
     }
     function showResult(uaStr) {
-        var res_ua = new userAgent(uaStr);
+        var res_ua = new uaDevice(uaStr);
 
         // handle browser
         var ua_browser = res_ua['browser']['name'] || '-';
