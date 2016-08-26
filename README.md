@@ -1,5 +1,5 @@
 # ua-device [![Build Status](https://travis-ci.org/fex-team/ua-device.svg?branch=master)](https://travis-ci.org/fex-team/ua-device)
-一个用于解析UA来得到用户终端信息的JS库，详情可见[线上demo](http://fex.baidu.com/ua-device/)
+一个用于解析UA来得到用户终端信息的JS库，详情可见[线上demo](http://fex-team.github.io/ua-device/)
 
 ## 下载
 ```bash
