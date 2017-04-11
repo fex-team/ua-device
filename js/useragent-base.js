@@ -2873,7 +2873,7 @@ var useragent_base = (function() {
              *      iOS
              */
 
-            if (ua.match('iPhone( Simulator)?;') || ua.match('iPad;') || ua.match('iPod;')) {
+            if (ua.match('iPhone( Simulator)?;') || ua.match('iPad;') || ua.match('iPod;') || ua.match(/iPhone\s*\d*s?c?;/i)) {
                 this.os.name = 'iOS';
                 this.os.version = new Version({
                     value: '1.0'
@@ -2909,7 +2909,7 @@ var useragent_base = (function() {
                     this.device.type = 'media';
                     this.device.manufacturer = 'Apple';
                     this.device.model = 'iPod Touch';
-                } else if (ua.match('iPhone;')) {
+                } else if (ua.match('iPhone;') || ua.match(/iPhone\s*\d*s?c?;/i)) {
                     this.device.type = 'mobile';
                     this.device.manufacturer = 'Apple';
                     this.device.model = 'iPhone';
