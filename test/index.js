@@ -20,12 +20,12 @@ function testData () {
 	var data_input_path = path.resolve(__dirname, './test_input');
 	var data_input = String(fs.readFileSync(data_input_path)).split("\n");
 	for(var i = 0; i < data_input.length; ++i) {
-		if(data_input.length == 0) {
+		if(data_input[i].length == 0) {
 			continue;
 		}
 		total_test_num += 1;
 		var tmp_result = new UA(data_input[i]);
-		
+
 		/********* handle browser engine os *********/
 		var tmp_arr = ['browser', 'engine', 'os'];
 		for(var j = 0; j < tmp_arr.length; ++j) {
