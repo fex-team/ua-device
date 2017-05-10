@@ -70,3 +70,27 @@ describe('ua-device测试数据共'+total_test_num+'条', function() {
 		});
 	}
 });
+
+
+
+
+
+
+
+
+
+describe('ios 手机 QQ 支持', function () {
+	var uaList = [
+		'Mozilla/5.0 (iPhone 6sp; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 MQQBrowser/7.3 Mobile/14E304 Safari/8536.25 MttCustomUA/2 QBWebViewType/1',
+		'Mozilla/5.0 (iPhone 6sp; CPU iPhone OS 9_3_5 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 MQQBrowser/7.4 Mobile/13G36 Safari/8536.25 MttCustomUA/2 QBWebViewType/1 WKType/1'
+	];
+	uaList.forEach(function (ua) {
+
+		it('测试 ua：\n    ' + ua, function () {
+			var uaData = new UA(ua);
+
+			assert.equal(uaData.device.model, 'IPHONE');
+			assert.equal(uaData.os.name, 'iOS');
+		});
+	});
+});
