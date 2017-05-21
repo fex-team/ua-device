@@ -630,6 +630,11 @@ var UA = useragent_base;
         uaData.browser.version = {
             original: match[1]
         };
+    } else if (match = /OPiOS\/([\w.]+)/i.exec(ua)) {
+        uaData.browser.name = 'Opera';
+        uaData.browser.version = {
+            original: match[1]
+        };
     }
     // IE 11
     else if (/Trident\/7/i.test(ua) && /rv:11/i.test(ua)) {
