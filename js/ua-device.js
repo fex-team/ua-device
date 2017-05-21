@@ -475,6 +475,12 @@ var UA = useragent_base;
                 original: match[1]
             };
         }
+        /**
+         * LBBROWSER
+         */
+        else if (match = /LBBROWSER/i.exec(ua)) {
+            uaData.browser.name = 'LBBROWSER';
+        }
     }
     else if (uaData.device.type === 'mobile' || uaData.device.type === 'tablet') {
         /**
