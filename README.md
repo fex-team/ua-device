@@ -1,4 +1,5 @@
-# ua-device [![Build Status](https://travis-ci.org/fex-team/ua-device.svg?branch=master)](https://travis-ci.org/fex-team/ua-device)
+# ua-device [![Build Status](https://travis-ci.org/fex-team/ua-device.svg?branch=master)](https://travis-ci.org/fex-team/ua-device) [![download](https://img.shields.io/npm/dt/ua-device.svg)](https://www.npmjs.com/package/ua-device) [![version](https://img.shields.io/npm/v/ua-device.svg)](https://www.npmjs.com/package/ua-device)
+
 一个用于解析UA来得到用户终端信息的JS库，详情可见[线上demo](http://fex-team.github.io/ua-device/)
 
 ## 下载
