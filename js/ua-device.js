@@ -1,5 +1,5 @@
 var uaDevice = function(ua) {
-var UA = useragent_base;
+    var UA = useragent_base;
     var uaData = new UA(ua);
     var match;
     var tmpMatch;
@@ -579,8 +579,17 @@ var UA = useragent_base;
          * Android Chrome Browser
          */
         else if (uaData.os.name === 'Android' && /safari/i.test(ua) && (match = /chrome\/([0-9\.]+)/i.exec(ua))) {
-            uaData.browser.name = 'Android Chrome';
-            uaData.browser.version = {original: match[1]};
+            if (tmpMatch = ua.match(/\s+(\w+Browser)\/?([\d\.]*)/)) {
+                uaData.browser.name = tmpMatch[1];
+                if (tmpMatch[2]) {
+                    uaData.browser.version = {original: tmpMatch[2]};
+                } else {
+                    uaData.browser.version = {original: match[1]};
+                }
+            } else {
+                uaData.browser.name = 'Android Chrome';
+                uaData.browser.version = {original: match[1]};
+            }
         }
 
         /**
