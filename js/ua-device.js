@@ -115,6 +115,10 @@ var UA = useragent_base;
             uaData.device.manufacturer = 'Xiaomi';
             uaData.device.model = 'HM';
         }
+        else if (match = ua.match(/redmi\s?(\d+)?/i)) {
+            uaData.device.manufacturer = 'Xiaomi';
+            uaData.device.model = 'HM-' + match[1];
+        }
         else if (uaData.device.manufacturer && uaData.device.manufacturer.toLowerCase() === 'xiaomi' && uaData.device.model) {
             // 针对通过base库判断出数据时命名风格不同。特殊处理适配如下
             if (match = uaData.device.model.match(/mi-one/i)) {
@@ -583,8 +587,17 @@ var UA = useragent_base;
          * Android Google Browser
          */
         else if (uaData.os.name === 'Android' && /safari/i.test(ua) && (match = /version\/([0-9\.]+)/i.exec(ua))) {
-            uaData.browser.name = 'Android Browser';
-            uaData.browser.version = {original: match[1]};
+            if (tmpMatch = ua.match(/\s+(\w+Browser)\/?([\d\.]*)/)) {
+                uaData.browser.name = tmpMatch[1];
+                if (tmpMatch[2]) {
+                    uaData.browser.version = {original: tmpMatch[2]};
+                } else {
+                    uaData.browser.version = {original: match[1]};
+                }
+            } else {
+                uaData.browser.name = 'Android Browser';
+                uaData.browser.version = {original: match[1]};
+            }
         }
 
         /**
@@ -594,8 +607,13 @@ var UA = useragent_base;
             uaData.browser.name = 'Safari';
         }
     }
-    if (/baiduboxapp/i.test(ua)) {
+    if (match = ua.match(/baiduboxapp\/?([\d\.]*)/i)) {
         uaData.browser.name = '百度框';
+        if (match[1]) {
+            uaData.browser.version = {
+                original: match[1]
+            };
+        }
         // uaData.browser.name = 'baidu box';
     }
     else if (/BaiduLightAppRuntime/i.test(ua)) {
