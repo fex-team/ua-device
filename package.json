@@ -1,6 +1,6 @@
 {
   "name": "ua-device",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "ua-device是由Baidu WebFE(FEX)团队开发的一个用于解析UA来得到用户终端信息的JS框架",
   "main": "index.js",
   "directories": {
@@ -20,6 +20,7 @@
     "ua-device"
   ],
   "devDependencies": {
+    "gulp": "^4.0.2",
     "mocha": ">2.3.4"
   },
   "author": "Hongbin Du <duhongbin01@baidu.com>",
